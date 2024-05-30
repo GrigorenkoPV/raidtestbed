@@ -34,3 +34,8 @@ add_executable(testbed
         confuse/confuse.c
         confuse/lexer.c
 )
+
+if (CMAKE_BUILD_TYPE STREQUAL "Debug")
+    target_compile_options(testbed PUBLIC "-fsanitize=undefined,address")
+    target_link_options(testbed PUBLIC "-fsanitize=undefined,address")
+endif ()
